@@ -53,6 +53,7 @@ data Thread = Thread
 searchThreadsAppendedSince :: UTCTime -> ConversationId -> IO [Thread]
 searchThreadsAppendedSince saveSince convId = do
   messagesJsons <- Dir.listDirectory chanDir
+  print messagesJsons
   Dir.withCurrentDirectory chanDir .
     concatMapM f $ filter (isSuffixOf ".json") messagesJsons
  where
